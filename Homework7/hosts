@@ -1,0 +1,7 @@
+[ec2]
+vm1 ansible_host=18.222.118.133
+vm2 ansible_host=18.220.24.2
+vm3 ansible_host=18.218.140.154
+
+[all:vars]
+ansible_user=ec2-user

@@ -1,0 +1,27 @@
+- hosts: all
+  become: yes   #sudo
+  tasks:
+  - name: Install packages
+    ansible.builtin.dnf:
+      name: httpd
+      state: present
+      update_cache: yes  #sudo apt update
+
+  - name: Start and enable httpd
+    ansible.builtin.service:   
+      name: httpd
+      state: started
+      enabled: yes
+
+  - name: Create users
+    ansible.builtin.user:
+      name: "{{ item }}"
+      state: present
+      shell: /bin/bash
+      create_home: yes
+      home: "/home/{{ item }}"
+    loop:
+      - jenny
+      - rose
+      - jisoo
+      - lisa
