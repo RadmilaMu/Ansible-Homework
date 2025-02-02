@@ -1,11 +1,11 @@
 - hosts: all
-  become: yes   #sudo
+  become: yes   
   tasks:
   - name: Install packages
     ansible.builtin.dnf:
       name: httpd
       state: present
-      update_cache: yes  #sudo apt update
+      update_cache: yes  
 
   - name: Start and enable httpd
     ansible.builtin.service:   
