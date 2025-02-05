@@ -1,0 +1,30 @@
+
+- hosts: kaizen
+  become: yes
+  vars:
+    hello:
+      - httpd
+      - tree
+      - unzip
+      - git
+      - wget
+    world: httpd
+    kaizen: started
+
+  tasks:
+    - name: Install Hello Packages
+      ansible.builtin.dnf:
+        name: "{{ item }}"
+        state: present
+      loop: "{{ hello }}"
+
+    - name: Start apache with varb 
+      ansible.builtin.service:   
+        name: "{{ world }}"
+        state: "{{ kaizen }}"
+        enabled: yes
+
+
+      
+
+ 
